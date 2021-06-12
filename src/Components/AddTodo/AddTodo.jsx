@@ -1,20 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import Modal from '../Modal/Modal'
+import { restRequest } from '../../Helpers/RequestHelper'
+
+import Input from '../Input/Input'
 
 const AddTodo = () => {
-  const [showModal, setShowModal] = useState(true)
-  const handleCloseModal = () => setShowModal(false)
-  const handleCloseModal = () => setShowModal(false)
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+
+  const fetchData = async () => {
+    const payload = { title, description }
+    restRequest('POST', '', payload)
+  }
 
   return (
     <>
-      <button className="button" onClick={handleOpenOrAddTodoModal}>
-        Close
-      </button>
-      <Modal showModal={showModal} onClose={handleCloseModal}>
-        <h1>THis is modal</h1>
-      </Modal>
+      <h1>Add your todos here</h1>
+      <form onSubmit={fetchData}>
+        <Input
+          label="Title"
+          value={title}
+          onChange={(val) => setTitle(val.value)}
+        />
+        <Input
+          label="description"
+          value={description}
+          onChange={(val) => setDescription(val.value)}
+        />
+        
+      </form>
     </>
   )
 }
