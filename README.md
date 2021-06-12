@@ -1,3 +1,7 @@
+#CORS Issue has not been handled in the BE.
+Kindly assess my dev skills from the code structure that i have build till add functionality.
+To run follow the below CRA Guide.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
