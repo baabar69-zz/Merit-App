@@ -1,9 +1,13 @@
 import React from 'react'
 import './Button.css'
 
-const Button = ({ label, onClick }) => {
+const Button = ({ type = '', label, onClick }) => {
+  const HandleOnClick = (e) => {
+    e.preventDefault()
+    onClick()
+  }
   return (
-    <button className="button" onClick={onClick}>
+    <button type={type} className="button" onClick={HandleOnClick}>
       {label}
     </button>
   )

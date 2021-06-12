@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import { restRequest } from '../../Helpers/RequestHelper'
 
+import Button from '../Button/Button'
 import Input from '../Input/Input'
 
 const AddTodo = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
-  const fetchData = async () => {
+  const postData = async () => {
     const payload = { title, description }
     restRequest('POST', '', payload)
   }
@@ -16,7 +17,7 @@ const AddTodo = () => {
   return (
     <>
       <h1>Add your todos here</h1>
-      <form onSubmit={fetchData}>
+      <form onSubmit={postData}>
         <Input
           label="Title"
           value={title}
@@ -27,7 +28,7 @@ const AddTodo = () => {
           value={description}
           onChange={(val) => setDescription(val.value)}
         />
-        
+        <Button type="submit" label="Create" onClick={() => postData(true)} />
       </form>
     </>
   )
